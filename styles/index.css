@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa+One&family=Noto+Color+Emoji&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+.slidev-layout {
+    strong {
+        font-weight: bold;
+    }
+}
