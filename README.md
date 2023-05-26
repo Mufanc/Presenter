@@ -17,3 +17,5 @@
 - [x] 带演讲者模式的网页应用
 
 - [ ] 静态编译的轻量级 HTTP 后端（Windows & Linux）
+
+- [x] [由 Service Worker 驱动的在线查看器](https://pre.mufanc.xyz/) 
