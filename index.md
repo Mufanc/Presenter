@@ -23,6 +23,8 @@ routerMode: hash
 
 <pad/>
 
+* 代码段
+
 ```c
 float Q_rsqrt( float number ) 
 {
@@ -41,3 +43,7 @@ float Q_rsqrt( float number )
     return y;
 }
 ```
+
+* 行内代码
+
+SQL 查询： ``SELECT `username` FROM users;``

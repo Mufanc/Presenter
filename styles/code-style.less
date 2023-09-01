@@ -1,0 +1,24 @@
+code:not(pre *) {
+    background: color-mix(in srgb, var(--prism-background) 70%, transparent);
+    backdrop-filter: blur(5px);
+}
+
+:is(div, pre)[class*='language-'] {
+    @border-radius: 5px;
+
+    position: relative;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    border-radius: @border-radius;
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--prism-background);
+        z-index: -1;
+        opacity: 0.3;
+        border: 1px solid var(--prism-comment);
+        border-radius: @border-radius;
+    }
+}
