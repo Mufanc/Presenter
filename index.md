@@ -2,7 +2,8 @@
 theme: default
 css: unocss
 fonts:
-  sans: 'Noto Serif SC, Noto Color Emoji'
+  sans: 'Noto Sans SC, Noto Color Emoji'
+  mono: 'Fira Code, monospace'
 routerMode: hash
 ---
 
