@@ -16,3 +16,28 @@ routerMode: hash
 </div>
 
 <div class="absolute right-3em bottom-2em"><b>Mufanc</b></div>
+
+---
+
+## 代码框
+
+<pad/>
+
+```c
+float Q_rsqrt( float number ) 
+{
+    long i;
+    float x2, y;
+    const float threeHalfs = 1.5f;
+
+    x2 = number * 0.5f;
+    y  = number;
+    i  = * ( long * ) &y;                       // evil floating point bit level hacking
+    i  = 0x5f3759df - ( i >> 1 );               // What the fuck? 
+    y  = * ( float * ) &i;
+    y  = y * ( threeHalfs - ( x2 * y * y ) );   // 1st iteration
+//  y  = y * ( threeHalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+    return y;
+}
+```
