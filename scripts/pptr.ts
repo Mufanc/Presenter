@@ -1,13 +1,13 @@
 import puppeteer from 'puppeteer-core'
 import express from 'express'
-import { PDFDocument } from "pdf-lib"
+import { PDFDocument } from 'pdf-lib'
 import { promises as fs } from 'fs'
 import { SingleBar } from 'cli-progress'
 
 const port = 10124
 
 async function sleep(ms: number) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(resolve, ms)
     })
 }
@@ -26,8 +26,8 @@ const server = app.listen(port, async () => {
         executablePath: args[0],
         defaultViewport: {
             width: 1920,
-            height: 1080
-        }
+            height: 1080,
+        },
     })
 
     const page = (await browser.pages())[0]
@@ -38,7 +38,7 @@ const server = app.listen(port, async () => {
     const prepare = new SingleBar({
         clearOnComplete: true,
         hideCursor: true,
-        format: 'Prepare [{bar}] {percentage}% | ETA: {eta}s'
+        format: 'Prepare [{bar}] {percentage}% | ETA: {eta}s',
     })
     prepare.start(wait, 0)
     for (let i = 0; i < wait; i++) {
@@ -53,7 +53,7 @@ const server = app.listen(port, async () => {
     const progress = new SingleBar({
         clearOnComplete: true,
         hideCursor: true,
-        format: 'Render [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}'
+        format: 'Render [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}',
     })
 
     progress.start(count, 0)
@@ -61,7 +61,7 @@ const server = app.listen(port, async () => {
         progress.increment()
 
         await page.evaluate(`location.hash = '#/${i}'`)
-        await sleep(2000)  // 等待渲染
+        await sleep(2000) // 等待渲染
 
         const screen = await page.screenshot()
 

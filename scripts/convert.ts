@@ -1,6 +1,6 @@
 import PptxGenJS from 'pptxgenjs'
 import parseArgs from 'minimist'
-import { createInterface } from "readline";
+import { createInterface } from 'readline'
 
 !(async () => {
     const pptx = new PptxGenJS()
