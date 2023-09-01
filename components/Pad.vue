@@ -6,14 +6,14 @@
 import { computed } from 'vue'
 
 interface Props {
-    h?: number
+    h?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    h: 10
+    h: '10px'
 })
 
-const height = computed(() => `${props.h}px`)
+const height = computed(() => props.h)
 </script>
 
 <style scoped>
