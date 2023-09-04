@@ -19,7 +19,7 @@ routerMode: hash
 
 ---
 
-## 代码框
+### 代码框
 
 <pad/>
 
@@ -47,3 +47,33 @@ float Q_rsqrt( float number )
 * 行内代码
 
 SQL 查询： ``SELECT `username` FROM users;``
+
+---
+
+### `<x-clicks>` 组件
+
+<br/>
+
+* 允许在组件内感知页面 `clicks` 变化
+
+```html
+<x-clicks :k='5'>
+    <some-component />
+</x-clicks>
+```
+
+<pad/>
+
+<x-clicks :k="5">
+    <x-clicks-example type="x-clicks"/>
+</x-clicks>
+
+<pad/>
+
+<v-clicks>
+
+* 后面也还可以再接其它 `v-click`
+
+* 就像这样
+
+</v-clicks>
