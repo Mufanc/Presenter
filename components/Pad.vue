@@ -10,7 +10,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    h: '10px'
+    h: '10px',
 })
 
 const height = computed(() => props.h)

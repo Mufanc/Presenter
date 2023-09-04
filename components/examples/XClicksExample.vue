@@ -3,7 +3,7 @@
         <ul>
             <li>比如这个组件</li>
         </ul>
-        <div class='x-clicks'>
+        <div class="x-clicks">
             <span v-for="i in count">{{ i }}</span>
         </div>
     </div>
@@ -38,7 +38,7 @@ const translate = computed(() => `translateX(${(current.value - 1) * 50}px)`)
         position: absolute;
         width: 40px;
         height: 40px;
-        transition: all .2s ease-out;
+        transition: all 0.2s ease-out;
         background: rgba(0, 0, 0, 0.2);
         transform: v-bind(translate);
     }

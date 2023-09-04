@@ -1,9 +1,9 @@
 <template>
-    <span class="cur-page" v-show='showPage'>{{ page }}</span>
+    <span class="cur-page" v-show="showPage">{{ page }}</span>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 
 // @ts-ignore
 const count = $slidev.nav.total
