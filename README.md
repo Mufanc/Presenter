@@ -12,10 +12,10 @@
 
 - [x] 按点击分页的 PDF / PPTX
 
-- [x] 更好 CSS 支持的 PDF / PPTX
+- [x] 具有更好 CSS 支持的 PDF / PPTX（由 [puppeteer](https://github.com/puppeteer/puppeteer) 驱动）
 
 - [x] 带演讲者模式的网页应用
 
-- [ ] 静态编译的轻量级 HTTP 后端（Windows & Linux）
+- [x] [由 Service Worker 驱动的在线预览工具](https://pre.mufanc.xyz/)
 
-- [x] [由 Service Worker 驱动的在线查看器](https://pre.mufanc.xyz/) 
+- [ ] 静态编译的轻量级 HTTP 后端（Windows & Linux）
