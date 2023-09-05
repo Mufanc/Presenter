@@ -3,15 +3,18 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, UnwrapNestedRefs } from 'vue'
+import { SlidevContextNav } from '@slidev/client/modules/context'
 
 // @ts-ignore
-const count = $slidev.nav.total
+const nav: UnwrapNestedRefs<SlidevContextNav> = $slidev.nav
 
-// @ts-ignore
-const page = computed(() => $slidev.nav.currentPage)
+const page = computed(() => nav.currentPage)
+const pageCount = computed(() => nav.total)
+
 const showPage = computed(() => {
-    return page.value !== 1 && page.value !== count + 1
+    console.log(page.value)
+    return page.value !== 1 && page.value !== pageCount.value + 1
 })
 </script>
 
