@@ -23,6 +23,8 @@ routerMode: hash
 
 <pad/>
 
+<v-click>
+
 * 代码段
 
 ```c
@@ -44,9 +46,15 @@ float Q_rsqrt( float number )
 }
 ```
 
+</v-click>
+
+<v-click>
+
 * 行内代码
 
 SQL 查询： ``SELECT `username` FROM users;``
+
+</v-click>
 
 ---
 
