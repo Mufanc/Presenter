@@ -1,37 +1,30 @@
 import puppeteer from 'puppeteer-core'
 import express from 'express'
-import { PDFDocument } from 'pdf-lib'
-import { promises as fs } from 'fs'
+import fs from 'fs/promises'
+import path from 'path'
+import playwright from 'playwright-core'
 import { SingleBar } from 'cli-progress'
+import { BUILD_DIR, PUPPETEER_PORT } from './constants'
 
-const port = 10124
-
-async function sleep(ms: number) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms)
-    })
+async function delay(ms: number) {
+    return new Promise(ok => setTimeout(ok, ms))
 }
 
 const app = express()
-app.use(express.static('build/web-app'))
+app.use(express.static(path.join(BUILD_DIR, 'spa')))
 
-const server = app.listen(port, async () => {
-    const args = process.argv.slice(2)
-    if (!args.length) {
-        console.error('missing argument: Chrome executable path')
-        process.exit(1)
-    }
-
+const server = app.listen(PUPPETEER_PORT, async () => {
     const browser = await puppeteer.launch({
-        executablePath: args[0],
+        executablePath: playwright.chromium.executablePath(),
         defaultViewport: {
             width: 1920,
             height: 1080,
         },
+        headless: 'new'  // true
     })
 
     const page = (await browser.pages())[0]
-    await page.goto(`http://localhost:${port}/`)
+    await page.goto(`http://localhost:${PUPPETEER_PORT}/`)
 
     // 等待页面加载完成
     const wait = 50
@@ -42,12 +35,11 @@ const server = app.listen(port, async () => {
     })
     prepare.start(wait, 0)
     for (let i = 0; i < wait; i++) {
-        await sleep(100)
+        await delay(100)
         prepare.increment()
     }
     prepare.stop()
 
-    const document = await PDFDocument.create()
     const count = (await page.$$('.slides-overview > div > *')).length
 
     const progress = new SingleBar({
@@ -56,23 +48,20 @@ const server = app.listen(port, async () => {
         format: 'Render [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}',
     })
 
+    await fs.mkdir(path.join(BUILD_DIR, 'images'), { recursive: true })
     progress.start(count, 0)
+
     for (let i = 1; i <= count; i++) {
         progress.increment()
 
+        // Todo: deal with clicks?
         await page.evaluate(`location.hash = '#/${i}'`)
-        await sleep(2000) // 等待渲染
+        await delay(1000)  // Todo: wait for events
 
-        const screen = await page.screenshot()
-
-        const image = await document.embedPng(screen)
-        const newPage = document.addPage([image.width, image.height])
-        newPage.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height })
+        await fs.writeFile(path.join(BUILD_DIR, 'images', `${i}`.padStart(2, '0')), await page.screenshot())
     }
 
     progress.stop()
-
-    await fs.writeFile('build/export-pptr.pdf', await document.save())
 
     await page.close()
     await browser.close()

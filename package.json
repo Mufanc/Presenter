@@ -3,10 +3,21 @@
     "scripts": {
         "format": "prettier --write .",
         "dev": "slidev --open index.md",
-        "build": "slidev build index.md -o build/web-app",
-        "export": "slidev export index.md --per-slide",
-        "export:pptr": "ts-node scripts/pptr.ts",
-        "convert": "python scripts/convert.py"
+        "images2doc": "ts-node scripts/images2doc.ts",
+        "export:images": "slidev export index.md --format png --output build/images --per-slide",
+        "export:doc": "run-s 'export:images {2}' 'images2doc -o {1}' --",
+        "export:puppeteer:images": "ts-node scripts/puppeteer.ts",
+        "export:puppeteer:doc": "run-s 'images2doc -o export-puppeteer'",
+        "export:puppeteer": "run-s export:puppeteer:images export:puppeteer:doc",
+        "export": "run-s 'export:doc export-default' 'export:doc export-clicks -c'",
+        "make:spa": "slidev build index.md -o build/spa",
+        "make:spa:zip": "zip -r build/spa.zip build/spa/*",
+        "make:spa:clean": "rm -rf build/spa",
+        "make:export": "run-s export",
+        "make:notes": "ts-node scripts/notes.ts",
+        "make": "run-s make:spa make:spa:zip make:notes make:export make:spa:clean",
+        "clean:env": "rm -rf node_modules",
+        "clean": "rm -rf build"
     },
     "dependencies": {
         "@slidev/cli": "^0.40.16",
@@ -20,6 +31,7 @@
         "express": "^4.18.2",
         "less": "^4.2.0",
         "minimist": "^1.2.8",
+        "npm-run-all": "^4.1.5",
         "pdf-lib": "^1.17.1",
         "playwright-chromium": "^1.37.1",
         "pptxgenjs": "^3.12.0",

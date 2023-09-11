@@ -5,6 +5,7 @@ fonts:
   sans: 'Noto Sans SC, Noto Color Emoji'
   mono: 'Fira Code, monospace'
 routerMode: hash
+canvasWidth: 1920
 ---
 
 <div style="transform: translateY(-30%)">
@@ -16,6 +17,10 @@ routerMode: hash
 </div>
 
 <div class="absolute right-3em bottom-2em"><b>Mufanc</b></div>
+
+<!--
+* 封面页
+-->
 
 ---
 
@@ -55,6 +60,16 @@ float Q_rsqrt( float number )
 SQL 查询： ``SELECT `username` FROM users;``
 
 </v-click>
+
+<!--
+
+#### 这里有一些笔记
+
+* 支持部分 Markdown 格式
+
+* 比如：**加粗** ~斜体~ ~~删除~~
+
+-->
 
 ---
 

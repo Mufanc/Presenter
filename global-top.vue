@@ -1,7 +1,9 @@
 <template>
-    <span class="cur-page" v-show="showPage"
-        >{{ page }}<sub class="page-count">/{{ pageCount }}</sub></span
-    >
+    <div>
+        <span class="cur-page" v-show="showPage"
+            >{{ page }}<sub class="page-count">/{{ pageCount }}</sub></span
+        >
+    </div>
 </template>
 
 <script setup lang="ts">

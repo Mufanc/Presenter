@@ -1,5 +1,17 @@
-.slidev-layout {
+#slide-content {
     strong {
         font-weight: bold;
     }
+}
+
+#slide-content > * {
+    @canvas-width: 980px;
+    @target-width: 1920px;
+    @scale: calc(unit(@target-width) / unit(@canvas-width));
+
+    position: absolute;
+    width: @canvas-width !important;
+    height: calc(@canvas-width / 16 * 9) !important;
+    transform: scale(@scale);
+    transform-origin: 0 0;
 }
