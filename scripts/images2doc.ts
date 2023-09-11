@@ -1,9 +1,9 @@
-import { PDFDocument } from 'pdf-lib'
-import PptxGenJS from 'pptxgenjs'
-import { SingleBar } from 'cli-progress'
 import fs from 'fs/promises'
 import path from 'path'
+import { SingleBar } from 'cli-progress'
 import parseArgs from 'minimist'
+import { PDFDocument } from 'pdf-lib'
+import PptxGenJS from 'pptxgenjs'
 import { BUILD_DIR } from './constants'
 
 async function images2doc(images: string[], width: number, height: number, basename: string) {

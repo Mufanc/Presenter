@@ -1,13 +1,13 @@
-import puppeteer from 'puppeteer-core'
-import express from 'express'
 import fs from 'fs/promises'
 import path from 'path'
-import playwright from 'playwright-core'
 import { SingleBar } from 'cli-progress'
+import express from 'express'
+import playwright from 'playwright-core'
+import puppeteer from 'puppeteer-core'
 import { BUILD_DIR, PUPPETEER_PORT } from './constants'
 
 async function delay(ms: number) {
-    return new Promise(ok => setTimeout(ok, ms))
+    return new Promise((ok) => setTimeout(ok, ms))
 }
 
 const app = express()
@@ -20,7 +20,7 @@ const server = app.listen(PUPPETEER_PORT, async () => {
             width: 1920,
             height: 1080,
         },
-        headless: 'new'  // true
+        headless: 'new', // true
     })
 
     const page = (await browser.pages())[0]
@@ -56,7 +56,7 @@ const server = app.listen(PUPPETEER_PORT, async () => {
 
         // Todo: deal with clicks?
         await page.evaluate(`location.hash = '#/${i}'`)
-        await delay(1000)  // Todo: wait for events
+        await delay(1000) // Todo: wait for events
 
         await fs.writeFile(path.join(BUILD_DIR, 'images', `${i}`.padStart(2, '0')), await page.screenshot())
     }

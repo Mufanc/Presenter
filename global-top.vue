@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, UnwrapNestedRefs } from 'vue'
 import { SlidevContextNav, SlidevContextNavClicks } from '@slidev/client/modules/context'
+import { computed, UnwrapNestedRefs } from 'vue'
 
 // @ts-ignore
 const nav: UnwrapNestedRefs<SlidevContextNav & SlidevContextNavClicks> = $slidev.nav

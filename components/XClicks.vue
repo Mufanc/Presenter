@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, provide, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, provide, ref } from 'vue'
 
 const props = defineProps<{ k: number }>()
 

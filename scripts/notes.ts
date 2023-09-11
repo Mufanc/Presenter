@@ -1,8 +1,8 @@
-import playwright from 'playwright-core'
-import puppeteer from 'puppeteer-core'
 import fs from 'fs/promises'
 import path from 'path'
 import express from 'express'
+import playwright from 'playwright-core'
+import puppeteer from 'puppeteer-core'
 import { BUILD_DIR, PUPPETEER_PORT } from './constants'
 
 const app = express()
@@ -15,7 +15,7 @@ const server = app.listen(PUPPETEER_PORT, async () => {
             width: 1920,
             height: 1080,
         },
-        headless: 'new'  // true
+        headless: 'new', // true
     })
 
     const page = (await browser.pages())[0]
@@ -26,8 +26,8 @@ const server = app.listen(PUPPETEER_PORT, async () => {
         path.join(BUILD_DIR, 'notes.pdf'),
         await page.pdf({
             format: 'A4',
-            margin: { top: '1cm', left: '1cm', right: '1cm', bottom: '1cm' }
-        })
+            margin: { top: '1cm', left: '1cm', right: '1cm', bottom: '1cm' },
+        }),
     )
 
     await page.close()
