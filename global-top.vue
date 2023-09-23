@@ -27,12 +27,11 @@ const progress = computed(() => {
 
 <style scoped lang="less">
 .cur-page {
-    color: #aaa;
     position: absolute;
     bottom: 1rem;
     right: 2rem;
     font-weight: bold;
-    filter: brightness(0) invert(1);
+    filter: brightness(0);
     mix-blend-mode: difference;
 
     &::after {
