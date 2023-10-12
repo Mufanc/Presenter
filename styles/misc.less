@@ -7,6 +7,49 @@
         text-align: justify;
         line-height: 1.6em;
     }
+
+    blockquote {
+        @background-color: color-mix(in srgb, var(--prism-background) 70%, transparent);
+        @border-color: color-mix(in srgb, var(--prism-comment) 30%, transparent);
+        @tips-color: #00cc8f;
+
+        position: relative;
+        padding: 1em 2em;
+
+        background: @background-color;
+        backdrop-filter: blur(5px);
+
+        border: 1px solid @border-color;
+        border-left: 3px solid @tips-color;
+        border-radius: 5px;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            inset: 0 .5em;
+
+            width: 4em;
+            height: 4em;
+
+            color: @tips-color;
+            opacity: 0.15;
+            z-index: -1;
+
+            // copied from: https://unocss.dev/interactive/?s=i-fa6-solid-quote-left
+            --un-icon: url("data:image/svg+xml;utf8,%3Csvg viewBox='0 0 448 512' width='1.2em' height='1.2em' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='currentColor' d='M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64h-64c-35.3 0-64-28.7-64-64V216z'/%3E%3C/svg%3E");
+            -webkit-mask: var(--un-icon) no-repeat;
+            mask: var(--un-icon) no-repeat;
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+            background-color: currentColor;
+        }
+
+        & cite {
+            display: block;
+            text-align: end ;
+        }
+    }
 }
 
 #slide-content > * {
