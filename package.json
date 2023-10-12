@@ -11,7 +11,7 @@
         "export:puppeteer": "run-s export:puppeteer:images export:puppeteer:doc",
         "export": "run-s 'export:doc export-default' 'export:doc export-clicks -c'",
         "make:spa": "slidev build index.md -o build/spa",
-        "make:spa:zip": "zip -r build/spa.zip build/spa/*",
+        "make:spa:zip": "sh -c 'cd build/spa && zip -r ../spa.zip *'",
         "make:spa:clean": "rm -rf build/spa",
         "make:export": "run-s export",
         "make:notes": "ts-node scripts/notes.ts",
