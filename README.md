@@ -23,3 +23,14 @@
 - [x] [由 Service Worker 驱动的在线预览工具](https://pre.mufanc.xyz/)
 
 - [ ] 静态编译的轻量级 HTTP 后端（Windows & Linux）
+
+### Usage
+
+```sh
+git clone https://github.com/Mufanc/Presenter && cd Presenter
+pnpm i
+
+pnpm make
+```
+
+细分的构建任务参见 [package.json](./package.json)
