@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="pointer-events-none">
         <span class="cur-page" v-show="showPage"
             >{{ page }}<sub class="page-count">/{{ pageCount }}</sub></span
         >
