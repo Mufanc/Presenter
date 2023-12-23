@@ -21,7 +21,7 @@ const showPage = computed(() => {
 })
 
 const progress = computed(() => {
-    return `${(((nav.clicks + 1) / (nav.clicksTotal + 1)) * 100).toFixed(2)}%`
+    return `${((nav.clicks + 1) / (nav.clicksTotal + 1)) * 100}%`
 })
 </script>
 
@@ -35,7 +35,8 @@ const progress = computed(() => {
     mix-blend-mode: difference;
 
     &::after {
-        @size: 0.7em;
+        @scale: 1.2;
+        @size: calc(0.7em / @scale);
         content: '';
         display: inline-block;
         width: @size;
@@ -45,6 +46,7 @@ const progress = computed(() => {
         border: 1px solid;
         background: conic-gradient(black v-bind(progress), transparent v-bind(progress));
         transition: all 0.2s ease-in-out;
+        transform: scale(@scale);
     }
 }
 
