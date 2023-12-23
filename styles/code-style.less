@@ -1,5 +1,7 @@
 code:not(pre *) {
-    background: color-mix(in srgb, var(--prism-background) 70%, transparent);
+    background: color-mix(in srgb, var(--prism-background) 20%, transparent);
+    //backdrop-filter: blur(5px);
+    border-radius: 1em;
 }
 
 :is(div, pre)[class*='language-'] {
@@ -7,17 +9,15 @@ code:not(pre *) {
 
     position: relative;
     background: transparent;
-    backdrop-filter: blur(5px);
     border-radius: @border-radius;
+    border: 1px solid color-mix(in srgb, var(--prism-comment) 50%, transparent);
 
     &::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: var(--prism-background);
+        backdrop-filter: blur(5px);
         z-index: -1;
-        opacity: 0.3;
-        border: 1px solid var(--prism-comment);
         border-radius: @border-radius;
     }
 }
