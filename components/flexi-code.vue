@@ -3,7 +3,7 @@
         <div ref="mirror" class="display-none">
             <slot></slot>
         </div>
-        <div ref="container" class="flexi-code">
+        <div ref="container" class="flexi-code" v-show="display.length">
             <transition-group name="list">
                 <div
                     v-for="index in display"
@@ -71,48 +71,22 @@ onMounted(() => {
     position: absolute;
 }
 
+.flexi-code {
+    margin: calc(var(--prism-block-margin-y) + var(--slidev-code-margin)) var(--prism-block-margin-x);
+    padding: calc(var(--slidev-code-padding) / 2) calc(var(--slidev-code-padding) / 2) !important;
+    transition: all 0.5s ease;
+}
+
 :deep(.slidev-code-wrapper) {
-    &:first-child {
-        pre {
-            border-radius: var(--slidev-code-radius) var(--slidev-code-radius) 0 0 !important;
-        }
-    }
+    margin: 0 !important;
 
-    &:not(:first-child) {
-        margin-top: 0 !important;
+    pre {
+        margin: 0 !important;
+        padding: calc(var(--slidev-code-padding) / 2) var(--slidev-code-padding) !important;
+        border: none;
 
-        pre {
-            margin-top: 0;
-            padding-top: calc(var(--slidev-code-padding) / 2) !important;
-            border-top: none;
-        }
-    }
-
-    &:last-child {
-        pre {
-            border-radius: 0 0 var(--slidev-code-radius) var(--slidev-code-radius) !important;
-        }
-    }
-
-    &:not(:last-child) {
-        margin-bottom: 0 !important;
-
-        pre {
-            margin-bottom: 0;
-            padding-bottom: calc(var(--slidev-code-padding) / 2) !important;
-            border-bottom: none;
-        }
-    }
-
-    &:not(:first-child, :last-child) {
-        pre {
-            border-radius: 0 !important;
-        }
-    }
-
-    &:only-child {
-        pre {
-            border-radius: var(--slidev-code-radius) !important;
+        &::before {
+            display: none;
         }
     }
 }
