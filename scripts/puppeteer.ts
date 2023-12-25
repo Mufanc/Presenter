@@ -20,7 +20,7 @@ const server = app.listen(PUPPETEER_PORT, async () => {
             width: 1920,
             height: 1080,
         },
-        headless: 'new', // true
+        headless: 'new',
     })
 
     const page = (await browser.pages())[0]
@@ -42,26 +42,64 @@ const server = app.listen(PUPPETEER_PORT, async () => {
 
     const count = (await page.$$('.slides-overview > div > *')).length
 
-    const progress = new SingleBar({
-        clearOnComplete: true,
-        hideCursor: true,
-        format: 'Render [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}',
-    })
+    const clicks = process.argv.slice(2)[0] === '--clicks'
 
-    await fs.mkdir(path.join(BUILD_DIR, 'images'), { recursive: true })
-    progress.start(count, 0)
+    if (clicks) {
+        const progress = new SingleBar({
+            clearOnComplete: true,
+            hideCursor: true,
+            format: 'Render {url} | time: {duration_formatted}',
+        })
 
-    for (let i = 1; i <= count; i++) {
-        progress.increment()
+        await fs.mkdir(path.join(BUILD_DIR, 'images'), { recursive: true })
 
-        // Todo: deal with clicks?
-        await page.evaluate(`location.hash = '#/${i}'`)
-        await delay(1000) // Todo: wait for events
+        progress.start(0, 0)
+        progress.update({ url: '' })
 
-        await fs.writeFile(path.join(BUILD_DIR, 'images', `${i}`.padStart(2, '0')), await page.screenshot())
+        let index = 0
+
+        while (true) {
+            await delay(1000)
+
+            const url = page.url()
+            const screenshot = await page.screenshot()
+
+            progress.update({ url })
+
+            await page.keyboard.press('ArrowRight')
+
+            if (page.url() === url) {
+                break
+            }
+
+            await fs.writeFile(path.join(BUILD_DIR, 'images', `${index}`.padStart(2, '0')), screenshot)
+
+            index += 1
+        }
+
+        progress.stop()
+    } else {
+        const progress = new SingleBar({
+            clearOnComplete: true,
+            hideCursor: true,
+            format: 'Render [{bar}] {percentage}% | ETA: {eta}s | {value}/{total}',
+        })
+
+        await fs.mkdir(path.join(BUILD_DIR, 'images'), { recursive: true })
+        progress.start(count, 0)
+
+        for (let i = 1; i <= count; i++) {
+            progress.increment()
+
+            // Todo: deal with clicks?
+            await page.evaluate(`location.hash = '#/${i}'`)
+            await delay(1000) // Todo: wait for events
+
+            await fs.writeFile(path.join(BUILD_DIR, 'images', `${i}`.padStart(2, '0')), await page.screenshot())
+        }
+
+        progress.stop()
     }
-
-    progress.stop()
 
     await page.close()
     await browser.close()

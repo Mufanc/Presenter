@@ -3,10 +3,10 @@
     "scripts": {
         "format": "prettier --write .",
         "dev": "slidev --open index.md",
-        "images2doc": "ts-node scripts/images2doc.ts",
+        "images2doc": "tsx scripts/images2doc.ts",
         "export:images": "slidev export index.md --format png --output build/images --per-slide",
         "export:doc": "run-s 'export:images {2}' 'images2doc -o {1}' --",
-        "export:puppeteer:images": "ts-node scripts/puppeteer.ts",
+        "export:puppeteer:images": "tsx scripts/puppeteer.ts --clicks",
         "export:puppeteer:doc": "run-s 'images2doc -o export-puppeteer'",
         "export:puppeteer": "run-s export:puppeteer:images export:puppeteer:doc",
         "export": "run-s 'export:doc export-default' 'export:doc export-clicks -c'",
@@ -14,7 +14,8 @@
         "make:spa:zip": "sh -c 'cd build/spa && zip -r ../spa.zip *'",
         "make:spa:clean": "rm -rf build/spa",
         "make:export": "run-s export",
-        "make:notes": "ts-node scripts/notes.ts",
+        "make:puppeteer": "run-s make:spa export:puppeteer make:spa:clean",
+        "make:notes": "tsx scripts/notes.ts",
         "make": "run-s make:spa make:spa:zip make:notes make:export make:spa:clean",
         "clean:env": "rm -rf node_modules",
         "clean": "rm -rf build"
@@ -39,6 +40,6 @@
         "pptxgenjs": "^3.12.0",
         "prettier": "^3.0.3",
         "puppeteer-core": "^19.11.1",
-        "ts-node": "^10.9.1"
+        "tsx": "^4.7.0"
     }
 }
