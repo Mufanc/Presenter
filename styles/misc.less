@@ -23,6 +23,15 @@
     p {
         text-align: justify;
         line-height: 1.6em;
+
+        &:not(:has(.un:first-child)) {
+            text-indent: 2em;
+        }
+    }
+
+    img:not([alt="un"]) {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     blockquote {
