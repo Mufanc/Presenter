@@ -1,7 +1,10 @@
-code:not(pre *) {
-    background: color-mix(in srgb, var(--prism-background) 20%, transparent);
-    //backdrop-filter: blur(5px);
-    border-radius: 1em;
+code {
+    font-size: 1.2em;
+
+    &:not(pre *) {
+        background: color-mix(in srgb, var(--prism-background) 20%, transparent);
+        border-radius: 1em;
+    }
 }
 
 :is(div, pre)[class*='language-'], .flexi-code {
