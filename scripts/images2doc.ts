@@ -37,8 +37,8 @@ async function images2doc(images: string[], width: number, height: number, basen
         basename = args.o
     await images2doc(
         (await fs.readdir(images)).map((it) => path.join(images, it)),
-        1920,
-        1080,
+        2480,
+        3508,
         basename,
     )
     await fs.rm(images, { recursive: true, force: true })

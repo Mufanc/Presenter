@@ -17,8 +17,8 @@ const server = app.listen(PUPPETEER_PORT, async () => {
     const browser = await puppeteer.launch({
         executablePath: playwright.chromium.executablePath(),
         defaultViewport: {
-            width: 1920,
-            height: 1080,
+            width: 2480,
+            height: 3508,
         },
         headless: 'new',
     })

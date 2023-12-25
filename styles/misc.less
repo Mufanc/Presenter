@@ -1,5 +1,22 @@
 #slide-content {
+    .slidev-layout {
+        font-size: 1.3rem;
+    }
+
     strong {
+        font-weight: bold;
+    }
+
+    ul > li {
+        list-style-type: disc;
+    }
+
+
+    h1 {
+        text-align: center;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
         font-weight: bold;
     }
 
@@ -54,12 +71,12 @@
 
 #slide-content > * {
     @canvas-width: 980px;
-    @target-width: 1920px;
+    @target-width: 2480px;
     @scale: calc(unit(@target-width) / unit(@canvas-width));
 
     position: absolute;
     width: @canvas-width !important;
-    height: calc(@canvas-width / 16 * 9) !important;
+    height: calc(@canvas-width * 1.414) !important;
     transform: scale(@scale);
     transform-origin: 0 0;
 }

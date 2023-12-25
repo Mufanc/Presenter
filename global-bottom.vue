@@ -1,14 +1,16 @@
 <template>
-    <div class="background-image"></div>
+    <div class="pointer-events-none">
+        <img class='logo' src="/images/HNU-Logo.svg" alt="logo" />
+    </div>
 </template>
 
+<script setup lang='ts'>
+</script>
+
 <style scoped>
-.background-image {
-    position: fixed;
-    inset: 0;
-    background: url('/images/bg.png') bottom;
-    background-size: cover;
-    z-index: -1;
-    opacity: 0.12;
+.logo {
+    margin: 10% auto 0;
+    width: 75%;
+    opacity: 0.2;
 }
 </style>
