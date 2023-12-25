@@ -9,15 +9,19 @@
 
 <script setup lang="ts">
 import { useMutationObserver } from '@vueuse/core'
-import { provide, ref } from 'vue'
+import { provide, ref, watch } from 'vue'
 
 const props = defineProps<{ k: number }>()
+
+const emit = defineEmits<{ (ev: 'clicks-change', clicks: number): void }>()
 
 const el = ref<HTMLElement>()
 const clicks = ref(0)
 
 provide('X-CLICKS', clicks)
 provide('X-CLICKS-COUNT', props.k)
+
+watch(clicks, (value) => emit('clicks-change', value))
 
 useMutationObserver(
     el,
