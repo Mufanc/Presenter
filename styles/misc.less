@@ -23,9 +23,10 @@
     p {
         text-align: justify;
         line-height: 1.6em;
+        text-indent: 2em;
 
-        &:not(:has(.un:first-child)) {
-            text-indent: 2em;
+        &:has(> .un) {
+            text-indent: revert;
         }
     }
 

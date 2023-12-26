@@ -1,4 +1,4 @@
-<template><span class=".un"></span></template>
+<template><span class="un"></span></template>
 
 <script setup lang="ts"></script>
 
