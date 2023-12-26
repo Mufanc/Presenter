@@ -30,10 +30,31 @@
     position: absolute;
     bottom: 20%;
     width: fit-content !important;
-    min-width: 50%;
+
+    tr {
+        border: none;
+    }
 
     td:first-child::after {
         content: '：'
+    }
+
+    td:last-child {
+        position: relative;
+        min-width: 20em;
+
+        &::after {
+            content: '';
+            position: absolute;
+
+            left: 0;
+            bottom: 0.4em;
+
+            width: 100%;
+            height: 1px;
+
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
     }
 }
 
