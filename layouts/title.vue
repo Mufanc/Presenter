@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
 
     color: var(--color-secondary);
     font-size: 3em;
-    font-family: HanYiShuHunTi;
+    font-family: HyShuHun;
 
     margin: 0;
     padding-top: 0.5em;

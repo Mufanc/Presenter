@@ -85,7 +85,7 @@ watch(current, (el) => {
 }
 
 .slidev-layout.cover {
-    background-image: url('/assets/images/cover01.png');
+    background-image: url('/assets/images/bg-cover.png');
     background-size: cover;
 }
 </style>

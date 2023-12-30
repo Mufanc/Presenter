@@ -6,7 +6,7 @@
 .background-image {
     position: fixed;
     inset: 0;
-    background-image: url('/assets/images/bg01.png');
+    background-image: url('/assets/images/bg-page.png');
     background-size: 335px 335px;
     background-repeat: repeat;
     z-index: -1;

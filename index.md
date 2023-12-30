@@ -21,6 +21,15 @@ canvasWidth: 1920
 -->
 
 ---
+layout: catalog
+---
+
+* 麓山巍巍
+* 湘水泱泱
+* 宏开学府
+* 济济沧沧
+
+---
 layout: title
 index: 1
 name: 麓山巍巍
