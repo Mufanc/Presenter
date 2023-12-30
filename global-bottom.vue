@@ -6,9 +6,9 @@
 .background-image {
     position: fixed;
     inset: 0;
-    background: url('/images/bg.png') bottom;
-    background-size: cover;
+    background-image: url('/assets/images/bg01.png');
+    background-size: 335px 335px;
+    background-repeat: repeat;
     z-index: -1;
-    opacity: 0.12;
 }
 </style>

@@ -8,95 +8,53 @@ routerMode: hash
 canvasWidth: 1920
 ---
 
-<div style="transform: translateY(-30%)">
+<div class="cover">
 
-# Presenter
+# 主题汇报
 
-## 报告模板
+<span class="name">汇报人：小湖</span>
 
 </div>
-
-<div class="absolute right-3em bottom-2em"><b>Mufanc</b></div>
 
 <!--
 * 封面页
 -->
 
 ---
-
-### 代码框
-
-<pad/>
-
-<v-click>
-
-* 代码段
-
-```c
-float Q_rsqrt( float number ) 
-{
-    long i;
-    float x2, y;
-    const float threeHalfs = 1.5f;
-
-    x2 = number * 0.5f;
-    y  = number;
-    i  = * ( long * ) &y;                       // evil floating point bit level hacking
-    i  = 0x5f3759df - ( i >> 1 );               // What the fuck? 
-    y  = * ( float * ) &i;
-    y  = y * ( threeHalfs - ( x2 * y * y ) );   // 1st iteration
-//  y  = y * ( threeHalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
-
-    return y;
-}
-```
-
-</v-click>
-
-<v-click>
-
-* 行内代码
-
-SQL 查询： ``SELECT `username` FROM users;``
-
-</v-click>
-
-<!--
-
-#### 这里有一些笔记
-
-* 支持部分 Markdown 格式
-
-* 比如：**加粗** ~斜体~ ~~删除~~
-
--->
-
+layout: title
+index: 1
+name: 麓山巍巍
+description: 这里是副标题
 ---
 
-### `<x-clicks>` 组件
+<!-- contents are ignored -->
 
-<br/>
+---
+layout: title
+index: 2
+name: 湘水泱泱
+description: 这里是副标题
+type: 2
+---
 
-* 允许在组件内感知页面 `clicks` 变化
+<!-- contents are ignored -->
 
-```html
-<x-clicks :k='5'>
-    <some-component />
-</x-clicks>
-```
+---
+layout: title
+index: 3
+name: 宏开学府
+description: 这里是副标题
+type: 3
+---
 
-<pad/>
+<!-- contents are ignored -->
 
-<x-clicks :k="5">
-    <x-clicks-example type="x-clicks"/>
-</x-clicks>
+---
+layout: title
+index: 4
+name: 济济沧沧
+description: 这里是副标题
+type: 4
+---
 
-<pad/>
-
-<v-clicks>
-
-* 后面也还可以再接其它 `v-click`
-
-* 就像这样
-
-</v-clicks>
+<!-- contents are ignored -->
