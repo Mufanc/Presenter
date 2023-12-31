@@ -31,14 +31,14 @@
         margin: 0;
         padding: 0;
 
-        font-family: FzKai;
+        font-family: FzKai, system-ui;
 
         &::before {
             @border-width: 2px;
             display: inline-block;
 
             content: counter(list-item, chinese-number);
-            font-family: HyZhongKai;
+            font-family: HyZhongKai, system-ui;
             text-align: center;
 
             width: 2em;
@@ -62,7 +62,7 @@
     color: var(--color-primary);
     writing-mode: tb;
     font-size: 2.75em;
-    font-family: HyYanKaiT;
+    font-family: HyYanKaiT, system-ui;
 
     &::before {
         content: '';
