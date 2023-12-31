@@ -1,5 +1,5 @@
 <template>
-    <div class="slidev-layout catalog w-full h-full">
+    <div class="slidev-layout catalog">
         <span class="title">目&nbsp;&nbsp;&nbsp;录</span>
         <slot></slot>
     </div>
