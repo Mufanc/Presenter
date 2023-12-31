@@ -12,6 +12,7 @@
 <style scoped lang="less">
 .box {
     transform: translateY(-20%);
+    color: var(--color-secondary);
 }
 
 .title {
@@ -22,10 +23,10 @@
 }
 
 .subtitle {
-    font-size: 2em;
+    font-size: 1.8em;
     font-family: 'Kabel Xlight', system-ui;
     text-align-last: justify;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.25em;
 }
 
 .slidev-layout.end {

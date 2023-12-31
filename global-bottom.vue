@@ -7,7 +7,7 @@
     position: fixed;
     inset: 0;
     background-image: url('/assets/images/bg-page.png');
-    background-size: 335px 335px;
+    background-size: 300px 300px;
     background-repeat: repeat;
     z-index: -1;
 }
