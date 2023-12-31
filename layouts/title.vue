@@ -1,29 +1,71 @@
 <template>
     <div class="slidev-layout title w-full h-full relative">
         <div class="flex items-center justify-center mt-2em">
-            <span class="index">{{ `${props.index}`.padStart(2, '0') }}</span>
+            <span class="index">{{ `${computedIndex}`.padStart(2, '0') }}</span>
             <div class="flex flex-col ml-2em">
                 <h1 class="name">{{ props.name }}</h1>
                 <span class="description">{{ props.description }}</span>
             </div>
         </div>
-        <img class="type-1" src="/assets/images/title01.png" alt="" v-if="props.type === 1" />
-        <img class="type-2" src="/assets/images/title02.png" alt="" v-if="props.type === 2" />
-        <img class="type-3" src="/assets/images/title03.png" alt="" v-if="props.type === 3" />
-        <img class="type-4" src="/assets/images/title04.png" alt="" v-if="props.type === 4" />
+        <img class="type-1" src="/assets/images/title01.png" alt="" v-if="computedType === 1" />
+        <img class="type-2" src="/assets/images/title02.png" alt="" v-if="computedType === 2" />
+        <img class="type-3" src="/assets/images/title03.png" alt="" v-if="computedType === 3" />
+        <img class="type-4" src="/assets/images/title04.png" alt="" v-if="computedType === 4" />
     </div>
 </template>
 
 <script setup lang="ts">
+import { useCurrentElement } from '@vueuse/core'
+import { computed, nextTick } from 'vue'
+
 interface Props {
-    index: number
     name: string
     description: string
-    type?: number
+    index?: number | null
+    type?: number | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
-    type: 1,
+    index: null,
+    type: null,
+})
+
+const self = useCurrentElement()
+
+let cache: number | null = null
+const defaultIndex = computed(() => {
+    if (cache !== null) return cache
+
+    const el = self.value
+    if (!el) return null
+
+    const cl = Array.from(el.classList).find((cl) => cl.match(/slidev-page-\d+/))
+    if (!cl) return null
+
+    const selector = `.slides-overview > div *:has(.slidev-layout.title):has(~ * .slidev-layout.${cl})`
+    cache = document.querySelectorAll(selector).length + 1
+
+    nextTick(() => {
+        cache = null
+    })
+
+    return cache
+})
+
+const computedIndex = computed(() => {
+    if (props.index === null) {
+        return defaultIndex.value
+    } else {
+        return props.index
+    }
+})
+
+const computedType = computed(() => {
+    if (props.type === null) {
+        return ((computedIndex.value - 1) % 4) + 1
+    } else {
+        return props.type
+    }
 })
 </script>
 
@@ -63,6 +105,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 .description {
     margin-top: 0.4em;
+    color: var(--color-secondary);
     font-family: FzKai, system-ui;
 }
 

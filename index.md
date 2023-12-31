@@ -31,7 +31,6 @@ layout: catalog
 
 ---
 layout: title
-index: 1
 name: 麓山巍巍
 description: 这里是副标题
 ---
@@ -40,30 +39,24 @@ description: 这里是副标题
 
 ---
 layout: title
-index: 2
 name: 湘水泱泱
 description: 这里是副标题
-type: 2
 ---
 
 <!-- contents are ignored -->
 
 ---
 layout: title
-index: 3
 name: 宏开学府
 description: 这里是副标题
-type: 3
 ---
 
 <!-- contents are ignored -->
 
 ---
 layout: title
-index: 4
 name: 济济沧沧
 description: 这里是副标题
-type: 4
 ---
 
 <!-- contents are ignored -->
