@@ -1,10 +1,10 @@
 <template>
-    <div class="slidev-layout title w-full h-full relative">
+    <div class="slidev-layout title relative">
         <div class="flex items-center justify-center mt-2em">
             <span class="index">{{ `${computedIndex}`.padStart(2, '0') }}</span>
             <div class="flex flex-col ml-2em">
                 <h1 class="name">{{ props.name }}</h1>
-                <span class="description">{{ props.description }}</span>
+                <span class="description"><slot></slot></span>
             </div>
         </div>
         <img class="type-1" src="/assets/images/title01.png" alt="" v-if="computedType === 1" />
@@ -20,7 +20,6 @@ import { computed, nextTick } from 'vue'
 
 interface Props {
     name: string
-    description: string
     index?: number | null
     type?: number | null
 }
@@ -107,6 +106,10 @@ const computedType = computed(() => {
     margin-top: 0.4em;
     color: var(--color-secondary);
     font-family: FzKai, system-ui;
+
+    :deep(p) {
+        margin: 0;
+    }
 }
 
 .type-1 {
