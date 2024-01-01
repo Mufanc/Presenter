@@ -64,6 +64,8 @@ const server = app.listen(PUPPETEER_PORT, async () => {
             const url = page.url()
             const screenshot = await page.screenshot()
 
+            await fs.writeFile(path.join(BUILD_DIR, 'images', `${index}`.padStart(2, '0')), screenshot)
+
             progress.update({ url })
 
             await page.keyboard.press('ArrowRight')
@@ -71,8 +73,6 @@ const server = app.listen(PUPPETEER_PORT, async () => {
             if (page.url() === url) {
                 break
             }
-
-            await fs.writeFile(path.join(BUILD_DIR, 'images', `${index}`.padStart(2, '0')), screenshot)
 
             index += 1
         }
