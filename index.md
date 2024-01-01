@@ -32,31 +32,45 @@ layout: catalog
 ---
 layout: title
 name: 麓山巍巍
-description: 这里是副标题
 ---
 
-<!-- contents are ignored -->
+幻灯片内容将被移至副标题处
+
+---
+
+# 带样式的大标题
+
+* 这是一张带有大标题的幻灯片
+
+* 这是一张带有大标题的幻灯片
+
+---
+
+### 也可以用普通标题
+
+<pad/>
+
+* 这是一张普通幻灯片
+
+* 这是一张普通幻灯片
 
 ---
 layout: title
 name: 湘水泱泱
-description: 这里是副标题
 ---
 
-<!-- contents are ignored -->
+幻灯片内容将被移至副标题处
 
 ---
 layout: title
 name: 宏开学府
-description: 这里是副标题
 ---
 
-<!-- contents are ignored -->
+幻灯片内容将被移至副标题处
 
 ---
 layout: title
 name: 济济沧沧
-description: 这里是副标题
 ---
 
-<!-- contents are ignored -->
+幻灯片内容将被移至副标题处
