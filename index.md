@@ -2,8 +2,8 @@
 theme: default
 css: unocss
 fonts:
-  sans: 'Noto Sans SC, Noto Color Emoji'
-  mono: 'Fira Code, monospace'
+  sans: "'Noto Sans SC', 'Open Sans', 'Noto Color Emoji'"
+  mono: "'Fira Code', monospace"
 routerMode: hash
 canvasWidth: 1920
 ---

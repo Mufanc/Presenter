@@ -1,5 +1,5 @@
 <template>
-    <div :style="style">
+    <div :style="style" class="at-click">
         <slot></slot>
     </div>
 </template>
@@ -22,7 +22,7 @@ const hidden = props.gone ? { display: 'none' } : { visibility: 'hidden' }
 
 const style = computed(() => {
     const k = props.k
-    const groups = k.match(/^([<>]?=?)?(\d+)$/)
+    const groups = k.match(/^([<>]?=?|!)?(\d+)$/)
 
     if (!groups) {
         console.error(`invalid prop value: ${k}`)
@@ -35,6 +35,8 @@ const style = computed(() => {
     switch (op) {
         case '=':
             return nav.clicks === value ? visible : hidden
+        case '!':
+            return nav.clicks !== value ? visible : hidden
         case '<':
             return nav.clicks < value ? visible : hidden
         case '<=':
