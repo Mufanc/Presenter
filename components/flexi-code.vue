@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { parseRangeString } from '@slidev/parser'
+import { useResizeObserver } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
 import XClicks from './x-clicks.vue'
 
@@ -43,6 +44,37 @@ const display = computed(() => {
     }
 
     return []
+})
+
+let heightBefore = 0
+let animating = false
+
+useResizeObserver(container, (entries) => {
+    if (animating) return
+
+    const entry = entries[0]
+    const { blockSize: heightAfter } = entry.borderBoxSize![0]
+
+    if (heightBefore > 0) {
+        animating = true
+
+        const anim = entry.target.animate([{ height: heightBefore + 'px' }, { height: heightAfter + 'px' }], {
+            duration: 300,
+            iterations: 1,
+            easing: 'ease',
+        })
+
+        anim.addEventListener('finish', () => {
+            heightBefore = heightAfter
+            animating = false
+        })
+
+        anim.addEventListener('cancel', () => {
+            animating = false
+        })
+    } else {
+        heightBefore = heightAfter
+    }
 })
 
 onMounted(() => {
