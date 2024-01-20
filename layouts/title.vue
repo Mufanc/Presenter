@@ -32,6 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
 const self = useCurrentElement()
 
 let cache: number | null = null
+
 const defaultIndex = computed(() => {
     if (cache !== null) return cache
 
@@ -44,9 +45,7 @@ const defaultIndex = computed(() => {
     const selector = `.slides-overview > div *:has(.slidev-layout.title):has(~ * .slidev-layout.${cl})`
     cache = document.querySelectorAll(selector).length + 1
 
-    nextTick(() => {
-        cache = null
-    })
+    nextTick(() => (cache = null))
 
     return cache
 })

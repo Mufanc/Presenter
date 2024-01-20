@@ -1,10 +1,5 @@
 <template>
-    <div class="slidev-layout title">
-        <!--        <div class="title flex">-->
-        <!--            <span></span>-->
-        <!--            <span>单机此处添加标题</span>-->
-        <!--            <span></span>-->
-        <!--        </div>-->
+    <div class="slidev-layout default">
         <slot></slot>
     </div>
 </template>
