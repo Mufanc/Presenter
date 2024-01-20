@@ -76,8 +76,8 @@ const computedType = computed(() => {
     color: var(--color-primary);
     font-size: 8em;
     font-family: MsYaHei, system-ui;
-    clip-path: polygon(0% 0%, 100% 0%, 100% @clip-from, 0% @clip-from, 0% @clip-to, 100% @clip-to, 100% 100%, 0% 100%)
-        content-box;
+
+    mask: linear-gradient(to bottom, #000 0%, #000 @clip-from, #0000 @clip-from, #0000 @clip-to, #000 @clip-to);
 }
 
 .name {
