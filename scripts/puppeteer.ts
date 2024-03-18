@@ -70,6 +70,8 @@ const server = app.listen(PUPPETEER_PORT, async () => {
 
             await page.keyboard.press('ArrowRight')
 
+            await delay(200)
+
             if (page.url() === url) {
                 break
             }
